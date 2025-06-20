@@ -1,0 +1,11 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+
+# Output files
+*.gif
+
+# Virtual environment
+.venv
+venv/
+env/
