@@ -223,24 +223,22 @@ grand_model = GRAND(input_dim=34, hidden_dim=16, num_classes=2)
 
 # GCN analysis
 _, gcn_reps = gcn_model(features, None)
-gcn_depths = [1, 2, 3, 4, 5]
 
 # GAT analysis  
 _, gat_reps = gat_model(features, edge_index)
-gat_depths = [1, 2, 3, 4, 5]
 
 # GRAND analysis
 _, grand_reps, grand_depths = grand_model(features, edges, tau=0.1, T=5.0)
 
 # analyze oversmoothing for each model
-gcn_mean, gcn_std, gcn_distances = analyze("GCN", gcn_reps, gcn_depths)
-gat_mean, gat_std, gat_distances = analyze("GAT", gat_reps, gat_depths)
+gcn_mean, gcn_std, gcn_distances = analyze("GCN", gcn_reps, [1, 2, 3, 4, 5])
+gat_mean, gat_std, gat_distances = analyze("GAT", gat_reps, [1, 2, 3, 4, 5])
 grand_mean, grand_std, grand_distances = analyze("GRAND", grand_reps, grand_depths)
 
 # plot mean distances
 plt.subplot(2, 2, 1)
-plt.plot(gcn_depths, gcn_mean, 'o-', label='GCN', linewidth=2)
-plt.plot(gat_depths, gat_mean, 's-', label='GAT', linewidth=2)
+plt.plot([1, 2, 3, 4, 5], gcn_mean, 'o-', label='GCN', linewidth=2)
+plt.plot([1, 2, 3, 4, 5], gat_mean, 's-', label='GAT', linewidth=2)
 plt.plot(grand_depths, grand_mean, '^-', label='GRAND', linewidth=2)
 plt.xlabel('Depth/Layer')
 plt.ylabel('Mean Pairwise Distance')
