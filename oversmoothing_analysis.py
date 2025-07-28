@@ -35,6 +35,7 @@ edge_index_temp = torch.tensor(edges, dtype=torch.long).t().contiguous()
 # create an undirected graph
 edge_index = torch.cat([edge_index_temp, edge_index_temp.flip(0)], dim=1)
 
+# function to get pairwise distances
 def pairwise_dist(representations):
     # not sure what this does but error message said to use this 
     representations = representations.detach().numpy()
@@ -45,6 +46,7 @@ def pairwise_dist(representations):
     
     return distance_matrix
 
+# function to analyze oversmoothing
 def analyze(model, representations_list, depths):
     distance_matrices = []
     mean_distances = []
