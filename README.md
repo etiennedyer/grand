@@ -1,11 +1,3 @@
 
 **Graph neural diffusion** </br>
-This repo contains the work I've done around [GRAND](https://arxiv.org/abs/2106.10934) by Chamberlain et al. 
-[This](diffusion.py) is my initial numpy implementation of the graph diffusion module with both implicit and 
-explicit Euler discretization, and
-visualization of the process.
-
-After that I [rebuilt](karate.py) it in Pytorch and built the rest of the model, testing it
-on the [Zachary's karate club](https://en.wikipedia.org/wiki/Zachary%27s_karate_club) dataset.
-
-The next step is to implement RK4 discretization and try to reproduce the paper's numerics.
+This repo contains the work I've done around [GRAND](https://arxiv.org/abs/2106.10934) by Chamberlain et al. The final report is [here](GRAND-Étienne-final.pdf), and the code for the main analysis concerning GRAND's resistance oversmoothing is [here](oversmoothing_analysis.py). In the end, my numerics on the CORA dataset didn't really support the authors' claim that GRAND is resistant to oversmoothing, though the architecture did have increased numerical stability / lower variance across runs. I still really enjoyed the project, got more comfortable with numerical analysis which was long overdue, and learned some PyTorch. I still stand by my impression that models with nice theoretical properties do not tend to be breakthrough models. 
